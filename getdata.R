@@ -113,7 +113,9 @@ renta$distrito <- substr(renta[,"distrito"],5,nchar(renta[,"distrito"]))
 # ------------------- API BBVA -------------------------
 ########################################################
 #-- Obtenemos un token para hacer peticiones a la API
-token <- POST("https://connect.bbva.com/token", query = list(grant_type = "client_credentials"), add_headers(Authorization = "Basic YXBwLmJidmEuY29tbWVyY2VwYXltZW50ZGF0YTpGaEcleE9Nb3BFS21DckdZanhOSVdqZ2gwOVlha1hRcmhacTgyWURwYnQyRzQqblpAd0dHNTdkNGNOOHVLM01z"))
+filename <- "./Data/tokenBBVA"
+credentials <- paste("Basic",readChar(filename,file.info(filename)$size))
+token <- POST("https://connect.bbva.com/token", query = list(grant_type = "client_credentials"), add_headers(Authorization = credentials))
 token <- fromJSON(content(token,"text"))
 accesskey <- paste(token$token_type,token$access_token)
 #-- Hacemos una llamada a la API para obtener todas las categorias de comercios
@@ -148,7 +150,7 @@ system.time(
       peticion <- paste("https://apis.bbva.com/paystats_sbx/2/zipcodes/",zipcode,"/customer_zipcodes?by=incomes&category=",code_subcategoria,"&date_max=20141231&date_min=20140101&group_by=month",sep = "")
       top100cp <- GET(peticion, add_headers(Authorization = accesskey))
       if(top100cp$status_code==401){
-        token <- POST("https://connect.bbva.com/token", query = list(grant_type = "client_credentials"), add_headers(Authorization = "Basic YXBwLmJidmEuY29tbWVyY2VwYXltZW50ZGF0YTpGaEcleE9Nb3BFS21DckdZanhOSVdqZ2gwOVlha1hRcmhacTgyWURwYnQyRzQqblpAd0dHNTdkNGNOOHVLM01z"))
+        token <- POST("https://connect.bbva.com/token", query = list(grant_type = "client_credentials"), add_headers(Authorization = credentials))
         token <- fromJSON(content(token,"text"))
         accesskey <- paste(token$token_type,token$access_token)
         top100cp <- GET(peticion, add_headers(Authorization = accesskey))
@@ -168,43 +170,9 @@ system.time(
     setnames(top100stats, "label", "cp_origen")
   })
 
-# #-- Recuperamos las estadisticas básicas de una categoria por CP
-# # subcatcode <- "es_car"
-# # zipcode <- "28045"
-# cpbasicstats <- data.frame(cat_code=character(0),cat_description=character(0),subcat_code=character(0),subcategoria=character(0),cp=character(0),amountavg=character(0))
-# system.time(
-#   for (i in 1:nrow(catdf)){
-#     catcode <- catdf[i]$cat_code
-#     catdescription <- catdf[i]$cat_description
-#     subcatcode <- catdf[i]$subcat_code
-#     subcatdesc <- catdf[i]$subcat_description
-#     print(i)
-#     for (zipcode in listacp){
-#       peticion <- paste("https://apis.bbva.com/paystats_sbx/2/zipcodes/",zipcode,"/basic_stats?group_by=month&date_min=20140101&date_max=20141231&category=",subcatcode,sep = "")
-#       basicstadistics <- GET(peticion, add_headers(Authorization = accesskey))
-#       if(basicstadistics$status_code==401){
-#         token <- POST("https://connect.bbva.com/token", query = list(grant_type = "client_credentials"), add_headers(Authorization = "Basic YXBwLmJidmEuY29tbWVyY2VwYXltZW50ZGF0YTpGaEcleE9Nb3BFS21DckdZanhOSVdqZ2gwOVlha1hRcmhacTgyWURwYnQyRzQqblpAd0dHNTdkNGNOOHVLM01z"))
-#         token <- fromJSON(content(token,"text"))
-#         accesskey <- paste(token$token_type,token$access_token)
-#         basicstadistics <- GET(peticion, add_headers(Authorization = accesskey))
-#       }
-#       bsjson <- fromJSON(content(basicstadistics,"text"))
-#       if (is.null(bsjson$data$stats$avg))
-#         avgstats <- 0
-#       else
-#         avgstats <- bsjson$data$stats$avg
-#       tmp <- data.frame(cat_code=catcode,cat_description=catdescription,subcat_code = subcatcode,subcategoria=subcatdesc,cp = zipcode, amountavg = avgstats)
-#       cpbasicstats <- rbind(cpbasicstats,tmp)
-#     }
-#   }
-# )
-
-
-
 #-- Guardamos las tablas en ficheros csv
 write.csv(dtlocales,file = "Data/dtlocales.csv", row.names = FALSE)
 write.csv(poblacion, "Data/poblacion.csv", row.names = FALSE)
 write.csv(renta,"Data/renta.csv", row.names = FALSE)
 write.csv(catdf,"Data/categorias.csv", row.names = FALSE)
 write.csv(top100stats,"Data/top100stats.csv", row.names = FALSE)
-# write.csv(cpbasicstats,"Data/cpbasicstats.csv", row.names = FALSE)
