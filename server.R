@@ -13,8 +13,7 @@ library(jsonlite)
 library(gdata)
 library(cluster)
 
-#setwd("/Users/Cesc/Downloads/Master Data Science KSchool/4 - R/Proyecto/")
-#-- Cargamos las tablas de los locales, poblacion, renta y lista de Codigos Postales
+#-- Cargamos las tablas de los locales, poblacion y renta
 dtlocales <- fread("Data/dtlocales.csv")
 dtpoblacion <- fread("Data/poblacion.csv")
 renta <- fread("Data/renta.csv")
@@ -30,10 +29,6 @@ localpordist <- dtlocales %>%
 
 #-- Leemos las categorias cargadas de la API del BBVA
 catdf <- fread("Data/categorias.csv")
-#-- Leemos las estadísticas básicas de las subcategorias por CP de la API del BBVA, 
-#-- eliminando las que esten vacías
-# cpbasicstats <- fread("Data/cpbasicstats.csv")
-# cpbasicstats <- cpbasicstats %>% filter(!is.na(amountavg) & amountavg!=0)
 #-- Leemos los datos de los top CP leidos de la API del BBVA
 top100stats <- fread("Data/top100stats.csv")
 setnames(top100stats, "label", "cp_origen")
@@ -45,6 +40,7 @@ subcattopCP <- top100stats %>%
 all.stats.per.cat.and.origen  <-
   top100stats %>% group_by(code_subcategoria,subcategoria,cp_origen,cp) %>% 
   summarise(total = round(sum(as.numeric(incomes)) / 1000,2)  )
+
 #-- Guardamos en una lista los valores de los CP de Madrid mas el de Tres Cantos
 listacp <- c(28001:28055,28790)
 
@@ -73,7 +69,6 @@ cpshape <- subset(shape,DESBDT %in% listacp)
 cpshape <-
   spTransform(cpshape, CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"))
 
-#eleccion <- c("Todos los negocios","Solo locales comerciales")
 epigrafes <- unique(dtlocales$desc_epigrafe)
 distritos <- unique(dtlocales$nombre_distrito)
 categorias <- unique(catdf$cat_description)
@@ -172,8 +167,6 @@ shinyServer(function(input, output, session) {
       x <- seleccion()$lon
       y <- seleccion()$lat
       z <- chull(x,y)
-      #         polidist <- madshape[madshape$DESBDT==input$dist]
-      #         polidist <- as.data.frame(coordinates(polidist))
       dt <-
         dt[as.logical(point.in.polygon(dt$lon,dt$lat,x[z],y[z])),]
       #Guardamos en dist la distancia minima de cada punto calculado
@@ -193,7 +186,7 @@ shinyServer(function(input, output, session) {
     }
   })
   #---------------------------
-  #-- Dibujamos por defecto el mapa de Madrid dibidido por distritos
+  #-- Dibujamos por defecto el mapa de Madrid dividido por distritos
   output$mapdist <- renderLeaflet({
     leaflet() %>%
       addProviderTiles("CartoDB.Positron") %>%
@@ -468,10 +461,9 @@ shinyServer(function(input, output, session) {
   
   output$poblacion <- renderPlot(p)
   
-#   #-- Tabla de Locales por distrito
+  #-- Tabla de Locales por distrito
   informelocalpordist <- copy(as.data.table(localpordist))
   colnames(informelocalpordist) <- c("Distrito","Epigrafe","Total locales en distrito")
-  #informelocalpordist$Epigrafe <- factor(informelocalpordist$Epigrafe)
   output$localesdistrito <- DT::renderDataTable(
     informelocalpordist, filter = "bottom", options = list(
       scrollY = "300px",
@@ -481,8 +473,6 @@ shinyServer(function(input, output, session) {
   
   #-- Tabla de habitantes por local
   tmphabitantesdistrito <- copy(habitantesdistrito)
-#    setnames(tmphabitantesdistrito,"desc_distrito","nombre_distrito")
-#    setnames(tmphabitantesdistrito,"total","total_habitantes")
   colnames(tmphabitantesdistrito) <- c("nombre_distrito","total_habitantes")
   habitantesporlocal <- left_join(localpordist,tmphabitantesdistrito, by="nombre_distrito")
   informehabdistlocal <- data.frame(Distrito=habitantesporlocal$nombre_distrito,Epigrafe=habitantesporlocal$desc_epigrafe,'Habitantes por local'=round(habitantesporlocal$total_habitantes/habitantesporlocal$total,digits = 2))
