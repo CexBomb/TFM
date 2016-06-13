@@ -1,10 +1,11 @@
 ---
 title: "Memoria del Trabajo Fin de Master"
-author: "Cesar Gonzalez"
+author: "Cesar Gonzalez Prieto"
 date: "15 de junio de 2016"
 output: html_document
 ---
 
+#Trabajo Fin de Máster
 
 ##Introducción
 
