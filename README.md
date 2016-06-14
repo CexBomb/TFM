@@ -36,7 +36,7 @@ Otros datos han sido obtenidos de la API del BBVA <https://www.bbvaapimarket.com
 
 ###Tablas públicas
 
-Debido a que la mayoría de las tablas utilizadas son públicas y además son muy pesadas, se va a indicar la página desde las que se pueden descargar en lugar de publicarlas.
+Debido a que la mayoría de las tablas utilizadas son públicas y además son pesadas, se va a indicar la página desde las que se pueden descargar en lugar de publicarlas.
 
 
 * Censo de locales y sus actividades. Descargada desde <http://datos.madrid.es/sites/v/index.jsp?vgnextoid=66665cde99be2410VgnVCM1000000b205a0aRCRD&vgnextchannel=20d612b9ace9f310VgnVCM100000171f5a0aRCRD>. Contiene los datos de todos los locales de Madrid y sus actividades por Epígrafe, así como su dirección y coordenadas en formato ED50.
