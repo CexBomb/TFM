@@ -17,7 +17,7 @@ Lógicamente cada negocio es distinto y tiene sus propias características, afec
 
 Con la elaboración de este Trabajo se intenta ofrecer una ayuda a la importante toma de decisión que supone la ubicación de un negocio y ofrecer datos fiables a la hora de realizar un plan de negocio o un estudio de mercado.
 
-Se puede acceder a la aplicación desde la dirección <http://cescbox.ddns.net:24445/>. En la propia página existe una sección de ayuda con tutoriales y videos explicativos.
+Se puede acceder a la aplicación desde la dirección <http://cescbox.ddns.net:8443/>. En la propia página existe una sección de ayuda con tutoriales y videos explicativos.
 
 ##Uso de la aplicación
 
