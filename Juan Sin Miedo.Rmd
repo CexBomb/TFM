@@ -5,7 +5,7 @@ date: "15 de junio de 2016"
 output: html_document
 ---
 
-```{r echo=FALSE, warning=FALSE, message=FALSE}
+```{r echo=FALSE}
 library(data.table)
 library(ggplot2)
 library(dplyr)
@@ -29,7 +29,7 @@ A la vuelta ya lleva un 94% cargado, así que espera pacientemente a que termine 
 
 <br>
 
-```{r echo=FALSE, fig.width=10, fig.height=10}
+```{r echo=FALSE}
 pobgroup <- dtpoblacion %>%
     group_by(desc_distrito,edad_dec) %>%
     dplyr::summarise(
@@ -91,7 +91,7 @@ Varios minutos después ("¡Vaya!, sólo 310.000 líneas"), coge la tabla y calcula 
 
 <br>
 
-```{r echo=FALSE, comment=NA}
+```{r echo=FALSE}
   subcattopCP <- top100stats %>% 
   group_by(subcategoria) %>%
   dplyr::summarise(total = round(sum(as.numeric(incomes)) / 1000,2) )
@@ -107,7 +107,7 @@ Piensa que también podría montar un restaurante, pero por su experiencia en la g
 
 <br>
 
-```{r echo=FALSE,comment=NA}
+```{r echo=FALSE}
   fashion <- top100stats %>% filter(subcategoria=="Fashion: small shops")
   groupfashion <-  fashion %>% group_by(subcategoria,cp) %>%
     dplyr::summarise(total=round(sum(as.numeric(incomes)) / 1000,2))
@@ -122,7 +122,7 @@ Echándo un vistazo a los campos de la tabla que le ha pasado su amigo observa qu
 
 <br>
 
-```{r echo=FALSE,comment=NA}
+```{r echo=FALSE}
   fashionorigen <- fashion %>% filter(cp_origen!=cp)
   topfashionorigen <- fashionorigen %>% group_by(cp_origen,cp) %>%
     dplyr::summarise(total=round(sum(as.numeric(incomes)) / 1000,2))
@@ -139,7 +139,7 @@ Para decidirse por uno de los dos distritos vuelve a preguntar a Google por dato
 
 <br>
 
-```{r echo=FALSE, comment=NA}
+```{r echo=FALSE}
   head(renta[order(Renta, decreasing = TRUE)], n=10)
 ```
 
