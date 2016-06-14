@@ -5,16 +5,6 @@ date: "15 de junio de 2016"
 output: html_document
 ---
 
-```{r echo=FALSE, warning=FALSE, results='hide',message=FALSE}
-library(data.table)
-library(ggplot2)
-library(dplyr)
-dtpoblacion <- fread("Data/poblacion.csv")
-top100stats <- fread("Data/top100stats.csv")
-setnames(top100stats, "label", "cp_origen")
-renta <- fread("Data/renta.csv")
-colnames(renta) <- c("Distrito","Renta")
-```
 #La historia de Juan Sin Miedo
 
 Juan sin Miedo es un joven recién licenciado en busca de empleo. Sabe que las cosas no están fáciles para los jóvenes así que, seducido por las historias de hombres y mujeres que emprenden su propio negocio, sin jefes, sin horarios fijos y ganando mucho dinero, está decidido a probar suerte y montar su propia empresa.
@@ -29,34 +19,7 @@ A la vuelta ya lleva un 94% cargado, así que espera pacientemente a que termine 
 
 <br>
 
-```{r echo=FALSE, fig.width=10, fig.height=10}
-pobgroup <- dtpoblacion %>%
-    group_by(desc_distrito,edad_dec) %>%
-    dplyr::summarise(
-      hombres =
-        sum(as.integer(espanoleshombres)) + sum(as.integer(extranjeroshombres)),
-      mujeres =
-        sum(as.integer(espanolesmujeres)) + sum(as.integer(extranjerosmujeres))
-    )
-  pobgroup.long <-
-    melt(
-      pobgroup, id.vars = c("desc_distrito","edad_dec"),
-      measure.vars = c("hombres","mujeres")
-    )
-  p <- ggplot(pobgroup.long,aes(edad_dec,value,fill = variable)) +
-    geom_bar(stat = "identity", position = "dodge") +
-    xlab("Edad (en decenas)") +
-    ylab("Total habitantes") +
-    theme(
-      panel.background = element_blank(),
-      panel.grid.major.x = element_blank(),
-      panel.grid.minor.x = element_blank(),
-      panel.grid.minor.y = element_blank(),
-      panel.ontop = TRUE
-    ) +
-    facet_wrap("desc_distrito")
-  p
-```
+![](./img/tablapoblacion.png)
 
 <br>
 
@@ -91,13 +54,8 @@ Varios minutos después ("¡Vaya!, sólo 310.000 líneas"), coge la tabla y calcula 
 
 <br>
 
-```{r echo=FALSE, comment=NA}
-  subcattopCP <- top100stats %>% 
-  group_by(subcategoria) %>%
-  dplyr::summarise(total = round(sum(as.numeric(incomes)) / 1000,2) )
 
-head(subcattopCP[order(total,decreasing = TRUE)])
-```
+![](./img/Captura2.png)
 
 <br>
 
@@ -107,12 +65,7 @@ Piensa que también podría montar un restaurante, pero por su experiencia en la g
 
 <br>
 
-```{r echo=FALSE,comment=NA}
-  fashion <- top100stats %>% filter(subcategoria=="Fashion: small shops")
-  groupfashion <-  fashion %>% group_by(subcategoria,cp) %>%
-    dplyr::summarise(total=round(sum(as.numeric(incomes)) / 1000,2))
-  head(groupfashion[order(total,decreasing = TRUE)])
-```
+![](./img/Captura3.png)
 
 <br>
 
@@ -122,12 +75,7 @@ Echándo un vistazo a los campos de la tabla que le ha pasado su amigo observa qu
 
 <br>
 
-```{r echo=FALSE,comment=NA}
-  fashionorigen <- fashion %>% filter(cp_origen!=cp)
-  topfashionorigen <- fashionorigen %>% group_by(cp_origen,cp) %>%
-    dplyr::summarise(total=round(sum(as.numeric(incomes)) / 1000,2))
-  head(topfashionorigen[order(total, decreasing = TRUE)], n=10)
-```
+![](./img/Captura4.png)
 
 <br>
 
@@ -139,9 +87,7 @@ Para decidirse por uno de los dos distritos vuelve a preguntar a Google por dato
 
 <br>
 
-```{r echo=FALSE, comment=NA}
-  head(renta[order(Renta, decreasing = TRUE)], n=10)
-```
+![](./img/Captura5.png)
 
 <br>
 
@@ -153,7 +99,7 @@ Pero Juan no se conforma con esto. Excitado y sin poder dormir, piensa que sería
 
 <br>
 
-![](./Captura.png)
+![](./img/Captura.png)
 
 <br>
 
