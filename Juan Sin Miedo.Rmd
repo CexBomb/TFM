@@ -35,7 +35,7 @@ Ya tiene un posible público objetivo. Lo siguiente que le gustaría saber son los
 
 -- "Bien, te lo paso por Dropbox, que ocupa 20 megas."
 
-Después de borrar algún vídeo de su cuenta de Dropbox consigue bajarse la tabla. No reconoce el formato del fichero, así que después de consultar a Google encuentra en un foro a alguien que dice que se puede abrir con el Notepad. Previendo que esto va para largo, se prepara otro café. Cuando consigue abrir el fichero después de varios minutos no ve más que un montón de llaves, comas, dos puntos y comillas.
+Después de borrar algún vídeo de su carpeta de Dropbox le da permiso a su amigo para que le suba ahí la tabla. Una vez descargada no reconoce el formato del fichero, pero no quiere parecer un inculto a los ojos de su amigo, así que después de consultar a Google encuentra en un foro a alguien que dice que se puede abrir con el Notepad. Previendo que esto va para largo, se prepara otro café. Cuando consigue abrir el fichero después de varios minutos no ve más que un montón de llaves, comas, dos puntos y comillas.
 
 -- "¿Qué mierda es esto que me has mandado?"
 
@@ -45,12 +45,12 @@ Después de borrar algún vídeo de su cuenta de Dropbox consigue bajarse la tabla.
 
 -- (suspiro) "¿Te vale un CSV?"
 
-Era la segunda vez que escuchaba CSV en el mismo día. Afortunadamente ya sabe cómo enfrentarse a él
+Era la segunda vez que escuchaba la palabra CSV en el mismo día. Afortunadamente ya sabe cómo enfrentarse a él
 
 -- "Sí con eso me valdría."
 
 Una vez descargada la tabla en CSV, repite los pasos para abrirla. Va a por su tercer café del día. "¿Se me habrá quedado pequeño el ordenador?".
-Varios minutos después ("¡Vaya!, sólo 310.000 líneas"), coge la tabla y calcula la suma de los ingresos de todos los negocios. El ordenador empieza a hacer ruidos raros.
+Varios minutos después ("¡Vaya!, sólo 310.000 filas"), coge la tabla y calcula la suma de los ingresos de todos los negocios. El ordenador empieza a hacer ruidos raros.
 
 <br>
 
@@ -69,7 +69,7 @@ Piensa que también podría montar un restaurante, pero por su experiencia en la g
 
 <br>
 
-Parece ser que el centro de Madrid es la zona donde más ropa se vende, con una diferencia de casi el doble con el código postal 28004. Aunque la diferencia es abultada, este resultado no le sorprende. Sabe que el alquiler de locales en el centro son muy caros, pero viendo estos datos quizás no sea tan mala idea. "Bueno," piensa, "pero yo no tengo mucho dinero, quizás sea un poco arriesgado montar un negocio en una zona tan cara..." 
+Parece ser que el centro de Madrid es la zona donde más ropa se vende, con una diferencia de casi el doble con respecto al código postal 28004. Aunque la diferencia es abultada, este resultado no le sorprende. Sabe que el alquiler de locales en el centro son muy caros, pero viendo estos datos quizás no sea tan mala idea. "Bueno," piensa, "pero yo no tengo mucho dinero, quizás sea un poco arriesgado montar un negocio en una zona tan cara..." 
 
 Echándo un vistazo a los campos de la tabla que le ha pasado su amigo observa que hay un campo que indica el código postal de la residencia del comprador. Quizás sería una buena idea ver cuáles son los compradores que más se desplazan para comprar ropa. A fin de cuentas, si se van a comprar a otras zonas a lo mejor es porque tienen pocas tiendas cerca... Ni corto ni perezoso se pone manos a la obra. Coge la tabla anterior y elimina los campos en los que coinciden el código postal de origen con el de destino, los vuelve a agrupar y los ordena por ingresos.
 
@@ -79,7 +79,7 @@ Echándo un vistazo a los campos de la tabla que le ha pasado su amigo observa qu
 
 <br>
 
-En un primer vistazo observa que el código postal 28006 es el que más dinero mueve fuera de su zona: ¡Más de 28 millones sólo en pagos con tarjetas de crédito! Antes de poner a enfriar el champán con su descubrimiento decide ubicar ese código postal en el mapa, descubriendo, decepcionado, que ese código está pegado al 28001. No sólo eso, los cuatro códigos siguientes también son céntricos y están pegados al 28001. 
+En un primer vistazo observa que el código postal 28006 es el que más dinero mueve fuera de su zona: ¡Más de 28 millones sólo en pagos con tarjetas de crédito! Antes de poner a enfriar el champán con su hallazgo decide ubicar ese código postal en el mapa, descubriendo, decepcionado, que ese código está pegado al 28001. No sólo eso, los cuatro códigos siguientes también son céntricos y están pegados al 28001. 
 
 Sin embargo el sexto y séptimo de la lista, el 28043 en Hortaleza y el 28034 en Fuencarral, sí que están lo suficientemente lejos como para pensar que el desplazamiento de la gente quizás no sea casual. Además, el importe de pagos realizados no es mucho menor que el de otras zonas más pegadas al centro. 
 
@@ -91,11 +91,11 @@ Para decidirse por uno de los dos distritos vuelve a preguntar a Google por dato
 
 <br>
 
-Comprueba que ambos distritos tienen una renta muy parecida, necesita más datos para decidirse por uno de los dos.Buscando en internet encuentra una tabla con la localización de todos los locales comerciales de Madrid. "¡Bingo!" La emoción inicial termina rápidamente cuando comprueba que el fichero ocupa ¡82 megas! "¡Madre mía!, ¿¡Cuánto va a tardar esto!?" Cómo no, está en formato CSV. Pone al Excel a importar los datos, se pone las zapatillas y baja al supermercado a por más leche y más café molido. Cuando sube de nuevo a casa sólo lleva un 34% cargado. Se hace otro café, se enciende un cigarro ("ya si eso la semana que viene") y se ve un capítulo de su serie favorita. Cuando acaba el capítulo comprueba gozoso que ya ha acabado de cargar. 160.000 filas y 46 columnas. 
+Comprueba que ambos distritos tienen una renta muy parecida, necesita más datos para decidirse por uno de los dos.Buscando en internet encuentra una tabla con la localización de todos los locales comerciales de Madrid. "¡Bingo!" La emoción inicial termina rápidamente cuando comprueba que el fichero ocupa ¡82 megas! "¡Madre mía!, ¿¡Cuánto va a tardar esto!?" Cómo no, está en formato CSV. Pone al Excel a importar los datos, se pone las zapatillas y baja al supermercado a por más leche y más café molido. Cuando sube de nuevo a casa sólo lleva un 34% cargado. Se hace otro café, el cuarto, se fuma un cigarro ("ya si eso la semana que viene") y se ve un capítulo de su serie favorita. Cuando acaba el capítulo comprueba gozoso que ya ha acabado de cargar. 160.000 filas y 46 columnas. 
 
 Echando un vistazo a la tabla observa que hay un campo epígrafe y otro distrito. Elimina todos los campos que no coincidan con el distrito "Fuencarral - El Pardo" y con el epígrafe "Comercio al por menor de prendas de vestir en establecimientos especializados" y observa que hay 152 tiendas de ropa en ese distrito. Realizando la misma técnica con el distrito de Hortaleza observa que sólo salen 80 locales. Realizando la división de los habitantes de cada distrito que tenía en la primera tabla con estos datos le da un resultado de 2239.75 habitantes por tienda para Hortaleza y 1558.48 habitantes por tienda para Fuencarral. Parace ser que Hortaleza está más necesitada de tiendas. "Bien, ya tenemos candidato". 
 
-Pero Juan no se conforma con esto. Excitado y sin poder dormir, piensa que sería una buena idea buscar una zona alejada de la competencia. Abre Google Maps, hace zoom en la zona de Hortaleza, hace una captura de pantalla y la imprime. Con una paciencia infinita empieza a dibujar puntos allí donde hay una tienda. Afortunadamente, además de las coordenadas, viene la dirección del local. "Menos mal", piensa, si no no sabría ni por dónde empezar. Una vez localizadas todas las tiendas y armado con lápiz, compás, escuadra y cartabón, empieza a dibujar líneas y a realizar cálculos, hasta encontrar algunas zonas alejadas de la competencia
+Pero Juan no se conforma con esto. Excitado y sin pizca de sueño, piensa que sería una buena idea ponerse a buscar una zona alejada de la competencia. Abre Google Maps, hace zoom en la zona de Hortaleza, hace una captura de pantalla y la imprime. Con una paciencia infinita empieza a dibujar puntos allí donde hay una tienda. Afortunadamente, además de las coordenadas, viene la dirección del local. "Menos mal", piensa, "Si no no sabría ni por dónde empezar". Una vez localizadas todas las tiendas y armado con lápiz, compás, escuadra y cartabón, empieza a dibujar líneas y a realizar cálculos, hasta encontrar algunas zonas alejadas de la competencia
 
 <br>
 
@@ -103,7 +103,7 @@ Pero Juan no se conforma con esto. Excitado y sin poder dormir, piensa que sería
 
 <br>
 
-Los primeros puntos calculados coinciden con las vías del tren, no es lo que él esperaba, pero podría buscar algo por los alrededores. Sin embargo, sigue calculando puntos hasta que encuentra, esta vez sí, una zona habitada.
+Los primeros puntos calculados coinciden con las vías del tren, no es lo que él esperaba, aunque podría buscar algo por los alrededores. Sin embargo, sigue calculando puntos hasta que encuentra, esta vez sí, una zona habitada.
 
 Después de este árduo trabajo Juan ya tiene algunas ideas en la cabeza. Durante las siguientes semanas seguirá buscando negocios, realizando cálculos, jugando con los datos, hablando con proveedores y locales, pintando lineas en mapas impresos y soñando con su futuro. Tiene al menos hasta los 40 años. Le deseamos toda la suerte del mundo.
 
