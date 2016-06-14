@@ -72,7 +72,7 @@ De la API del BBVA se obtuvieron las siguientes tablas:
 
 ##Tratamiento de los datos.
 
-La aplicación se ha implementado utilizando R, Shiny y Leaflet entre otras tecnologías. La idea es ofrecer un servicio web que muestre información en un tiempo razonable. Por este motivo se dividió el trabajo en dos archivos. El primero realizado en R, dedicado exclusivamente al tratamiento, limpieza y preparación de los datos. El segundo, una aplicación Shiny, obtiene los datos anteriores y los utiliza para una rápida visualización de los mismos. Sin embargo desde este archivo se realizan también algunos cálculos complejos como se detalla más adelante.
+La aplicación se ha implementado utilizando R, Shiny y Leaflet entre otras tecnologías. La idea es ofrecer un servicio web que muestre información en un tiempo razonable. Por este motivo se dividió el trabajo en dos partes. La primera (getdata.R) es un script realizado en R, cuya función es exclusivamente el tratamiento, limpieza y preparación de los datos. El segundo, una aplicación Shiny (ui.R, server.R y styles.R), obtiene los datos anteriores y los utiliza para una rápida visualización de los mismos. Sin embargo desde este archivo se realizan también algunos cálculos complejos como se detalla más adelante.
 
 ####Tabla de locales.
 
@@ -121,7 +121,7 @@ Las intersecciones de estas mediatrices son una buena aproximación a los puntos
 
 ####Representación de la información, tablas y gráficos.
 
-El tratamiento para la representación de la información para mostrar las diferentes tablas y gráficos que se pueden obtener en la aplicación se realiza mediante el filtrado y agrupamiento de las tablas obtenidas en los puntos anteriores, pasándolo a un formato que sea entendido tanto por Shiny como por Leaflet cuando ha sido necesario.
+El tratamiento para la representación de la información para mostrar las diferentes tablas y gráficos que se pueden obtener en la aplicación se realiza mediante el filtrado y agrupamiento de las tablas obtenidas en los puntos anteriores, pasándolo a un formato que sea entendido tanto por Shiny como por Leaflet para su renderizado.
 
 
 

@@ -75,7 +75,7 @@ img {
 <p>Por supuesto, el éxito de un negocio depende de factores internos, como una buena gestión, trato al cliente, etc. Pero en la mayoría de negocios existen factores externos que condicionan el éxito o fracaso del mismo. Estos factores pueden ser el número de habitantes de la zona, su renta media, la distribución de la edad de la población, la existencia o no de competencia, etc.</p>
 <p>Lógicamente cada negocio es distinto y tiene sus propias características, afectando estos factores de manera distinta a cada uno de ellos. Por este motivo no se puede dar una respuesta única ni 100% fiable a la pregunta inicial, pero la importania de estos datos se demuestra en el hecho de que en cualquier plan de negocio se exige que se tengan en cuenta estos factores, el llamado <em>Entorno económico y sociocultural</em></p>
 <p>Con la elaboración de este Trabajo se intenta ofrecer una ayuda a la importante toma de decisión que supone la ubicación de un negocio y ofrecer datos fiables a la hora de realizar un plan de negocio o un estudio de mercado.</p>
-<p>Se puede acceder a la aplicación desde la dirección <a href="http://cescbox.ddns.net:24445/" class="uri">http://cescbox.ddns.net:24445/</a>. En la propia página existe una sección de ayuda con tutoriales y videos explicativos.</p>
+<p>Se puede acceder a la aplicación desde la dirección <a href="http://cescbox.ddns.net:8443/" class="uri">http://cescbox.ddns.net:8443/</a>. En la propia página existe una sección de ayuda con tutoriales y videos explicativos.</p>
 </div>
 <div id="uso-de-la-aplicacion" class="section level2">
 <h2>Uso de la aplicación</h2>
@@ -92,7 +92,7 @@ img {
 <p>Otros datos han sido obtenidos de la API del BBVA <a href="https://www.bbvaapimarket.com/web/api_market/" class="uri">https://www.bbvaapimarket.com/web/api_market/</a>. Estos datos no pueden ser publicados por lo que sólo se hará una descripción de los mismos.</p>
 <div id="tablas-publicas" class="section level3">
 <h3>Tablas públicas</h3>
-<p>Debido a que la mayoría de las tablas utilizadas son públicas y además son muy pesadas, se va a indicar la página desde las que se pueden descargar en lugar de publicarlas.</p>
+<p>Debido a que la mayoría de las tablas utilizadas son públicas y además son pesadas, se va a indicar la página desde las que se pueden descargar en lugar de publicarlas.</p>
 <ul>
 <li><p>Censo de locales y sus actividades. Descargada desde <a href="http://datos.madrid.es/sites/v/index.jsp?vgnextoid=66665cde99be2410VgnVCM1000000b205a0aRCRD&amp;vgnextchannel=20d612b9ace9f310VgnVCM100000171f5a0aRCRD" class="uri">http://datos.madrid.es/sites/v/index.jsp?vgnextoid=66665cde99be2410VgnVCM1000000b205a0aRCRD&amp;vgnextchannel=20d612b9ace9f310VgnVCM100000171f5a0aRCRD</a>. Contiene los datos de todos los locales de Madrid y sus actividades por Epígrafe, así como su dirección y coordenadas en formato ED50.</p></li>
 <li><p>Callejero vigente. Descargado desde <a href="http://datos.madrid.es/sites/v/index.jsp?vgnextoid=f1555cde99be2410VgnVCM1000000b205a0aRCRD&amp;vgnextchannel=20d612b9ace9f310VgnVCM100000171f5a0aRCRD" class="uri">http://datos.madrid.es/sites/v/index.jsp?vgnextoid=f1555cde99be2410VgnVCM1000000b205a0aRCRD&amp;vgnextchannel=20d612b9ace9f310VgnVCM100000171f5a0aRCRD</a>. Este listado contiene datos geográficos y administrativos de todos los portales y edificios de Madrid. Esta información fué necesaria utilizarla debido a que la anterior tabla tenía coordenadas erróneas y en ocasiones inexistentes. De ella se extraen las coordenadas (en formato DMS) y los códigos postales.</p></li>
@@ -123,7 +123,7 @@ img {
 </div>
 <div id="tratamiento-de-los-datos." class="section level2">
 <h2>Tratamiento de los datos.</h2>
-<p>La aplicación se ha implementado utilizando R, Shiny y Leaflet entre otras tecnologías. La idea es ofrecer un servicio web que muestre información en un tiempo razonable. Por este motivo se dividió el trabajo en dos archivos. El primero realizado en R, dedicado exclusivamente al tratamiento, limpieza y preparación de los datos. El segundo, una aplicación Shiny, obtiene los datos anteriores y los utiliza para una rápida visualización de los mismos. Sin embargo desde este archivo se realizan también algunos cálculos complejos como se detalla más adelante.</p>
+<p>La aplicación se ha implementado utilizando R, Shiny y Leaflet entre otras tecnologías. La idea es ofrecer un servicio web que muestre información en un tiempo razonable. Por este motivo se dividió el trabajo en dos partes. La primera (getdata.R) es un script realizado en R, cuya función es exclusivamente el tratamiento, limpieza y preparación de los datos. El segundo, una aplicación Shiny (ui.R, server.R y styles.R), obtiene los datos anteriores y los utiliza para una rápida visualización de los mismos. Sin embargo desde este archivo se realizan también algunos cálculos complejos como se detalla más adelante.</p>
 <div id="tabla-de-locales." class="section level4">
 <h4>Tabla de locales.</h4>
 <p>Esta tabla tiene muchas columnas innecesarias, por lo que lo primero es seleccionar sólo las que son de interés. Existen muchas actividades en esta tabla, algunas de ellas no tienen mucho sentido incluirlas en este trabajo, como grandes industrias, por ejemplo. En lugar de ellos nos hemos centrado en los negocios que requieren de un local comercial. Por este motivo se han filtrado las actividades dejando sólo las correspondientes a venta al por menor, hostelería e inmobiliarias. Por supuesto si se estuviese interesado en alguna actividad adicional sería tan sencillo como añadir dicha actividad al filtro. Después eliminamos los locales cerrados o que no tiene actividad declarada.</p>
@@ -166,7 +166,7 @@ img {
 </div>
 <div id="representacion-de-la-informacion-tablas-y-graficos." class="section level4">
 <h4>Representación de la información, tablas y gráficos.</h4>
-<p>El tratamiento para la representación de la información para mostrar las diferentes tablas y gráficos que se pueden obtener en la aplicación se realiza mediante el filtrado y agrupamiento de las tablas obtenidas en los puntos anteriores, pasándolo a un formato que sea entendido tanto por Shiny como por Leaflet cuando ha sido necesario.</p>
+<p>El tratamiento para la representación de la información para mostrar las diferentes tablas y gráficos que se pueden obtener en la aplicación se realiza mediante el filtrado y agrupamiento de las tablas obtenidas en los puntos anteriores, pasándolo a un formato que sea entendido tanto por Shiny como por Leaflet para su renderizado.</p>
 </div>
 </div>
 </div>
